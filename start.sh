@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cd /app/twde-datalab-master && python src/app.py
+cd /app/continuous-intelligence && python src/app.py
