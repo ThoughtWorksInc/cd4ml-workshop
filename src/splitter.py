@@ -1,18 +1,5 @@
 import os
 import pandas as pd
-import s3fs
-
-def load_data():
-    s3bucket = "twde-datalab/"
-    key = "raw/store47-2016.csv"
-
-    if not os.path.exists('data/raw'):
-        os.makedirs('data/raw')
-
-    if not os.path.exists("data/" + key):
-        print("Downloading data...")
-        s3 = s3fs.S3FileSystem(anon=True)
-        s3.get(s3bucket + key, "data/" + key)
 
 def get_validation_period(latest_date_train, days_back=15):
     # for Kaggle we want from Wednesday to Thursday for a 15 day period
@@ -37,8 +24,6 @@ def write_data(table, filename):
 
 
 def main():
-    # load_data()
-
     print("Loading data...")
     train = pd.read_csv("data/raw/store47-2016.csv")
 
