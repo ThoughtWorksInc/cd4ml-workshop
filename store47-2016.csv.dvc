@@ -1,0 +1,11 @@
+cmd: python src/download_data.py
+deps:
+- md5: f007d66c167e0f2a5dced08c4b8be28d
+  path: src/download_data.py
+- etag: CJyDo9SOod0CEAI=
+  path: gs://continuous-intelligence/store47-2016.csv
+md5: ddf4374f0e69fae00f158842b78b86db
+outs:
+- cache: true
+  md5: 14bf558bdee3933dc03fd28b1d00de35
+  path: data/raw/store47-2016.csv

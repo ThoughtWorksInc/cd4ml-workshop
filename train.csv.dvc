@@ -1,10 +1,10 @@
 cmd: python src/splitter.py
 deps:
-- etag: CIT8t9H/lN0CEAI=
-  path: gs://continuous-intelligence/store47-2016.csv
-- md5: 128b645d211e7a9747ff85cfa83c3a6b
+- md5: 14bf558bdee3933dc03fd28b1d00de35
+  path: data/raw/store47-2016.csv
+- md5: 59a4be513c2165242867265e7c5c454d
   path: src/splitter.py
-md5: 011ceb501bad41f86ece868484efa785
+md5: 99ddb6dc91f3b22ac97386ef1c4f79b6
 outs:
 - cache: true
   md5: bf24f154dfa1a06a4ea07e278c9fa2f7
