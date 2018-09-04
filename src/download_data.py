@@ -8,7 +8,7 @@ def load_data():
     if not os.path.exists('data/raw'):
         os.makedirs('data/raw')
 
-    if not os.path.exists("data/" + key):
+    if not os.path.exists("data/raw/" + key):
         client = storage.Client()
         bucket = client.get_bucket(gcsBucket)
         blob = bucket.get_blob(key)
