@@ -1,0 +1,4 @@
+[core]
+remote = default
+['remote "default"']
+url = gs://continuous-intelligence

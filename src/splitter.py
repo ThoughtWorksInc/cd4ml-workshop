@@ -37,7 +37,7 @@ def write_data(table, filename):
 
 
 def main():
-    load_data()
+    # load_data()
 
     print("Loading data...")
     train = pd.read_csv("data/raw/store47-2016.csv")
