@@ -1,0 +1,14 @@
+cmd: python src/splitter.py
+deps:
+- md5: 14bf558bdee3933dc03fd28b1d00de35
+  path: data/raw/store47-2016.csv
+- md5: 128b645d211e7a9747ff85cfa83c3a6b
+  path: src/splitter.py
+md5: 8e543bb0210424b84b4b7b9c2b44d32d
+outs:
+- cache: true
+  md5: bf24f154dfa1a06a4ea07e278c9fa2f7
+  path: data/splitter/train.csv
+- cache: true
+  md5: 24fbbcd89ee43cbc36ca322b097ad704
+  path: data/splitter/validation.csv
