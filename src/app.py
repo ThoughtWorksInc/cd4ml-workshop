@@ -20,12 +20,7 @@ def get_prediction():
 
   data = {
     "date": date_string,
-    "store_nbr": request.args.get("store_nbr"),
     "item_nbr": request.args.get("item_nbr"),
-    "onpromotion": request.args.get("onpromotion"),
-    "city": "Quito",
-    "state": "Pichincha",
-    "cluster": request.args.get("cluster"),
     "family": request.args.get("family"),
     "class": request.args.get("class"),
     "perishable": request.args.get("perishable"),
@@ -35,7 +30,6 @@ def get_prediction():
     "day": date.day,
     "dayofweek": date.weekday(),
     "days_til_end_of_data": 0,
-    "cpi": 105.55273726978949,
     "dayoff": request.args.get("day_off")
   }
   df = pd.DataFrame(data=data, index=['row1'])
