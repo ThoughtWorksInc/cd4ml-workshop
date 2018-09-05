@@ -1,23 +1,5 @@
 # Continuous Intelligence Workshop
 
-## Local setup
-
-### Build locally and run
-
-`docker build . -t workshop`
-
-`docker run -d -p 5005:5005 workshop`
-
-You can view the app at `http://localhost:5005`
-
-Note: try to assign 8G memory and 2CPU in Docker when running the docker build
-
-### Run with existing image
-
-`docker pull TBD`
-
-`docker run TBD`
-
 ## Running Workshop with dvc
 
 1. Build the pipline
@@ -67,3 +49,21 @@ dvc repro model.pkl.dvc
 Here, `model.pkl.dvc` is the last output in the dvc pipeline. Running it will reproduce all steps.
 
 If you want to change the model, for example, edit the `decision_tree.py` file as you see fit. Then, you should be able to re-execute the model simply by re-running the pipeline using `dvc repro model.pkl.dvc`.
+
+## Local setup
+
+### Build locally and run
+
+`docker build . -t workshop`
+
+`docker run -d -p 5005:5005 workshop`
+
+You can view the app at `http://localhost:5005`
+
+Note: try to assign 8G memory and 2CPU in Docker when running the docker build
+
+### Run with existing image
+
+`docker pull TBD`
+
+`docker run TBD`
