@@ -54,9 +54,11 @@ If you want to change the model, for example, edit the `decision_tree.py` file a
 
 ### Build locally and run
 
-`docker build . -t workshop`
+Once the model has been trained
 
-`docker run -d -p 5005:5005 workshop`
+`docker build . -t ci-workshop`
+
+`docker run -d -p 5005:5005 ci-workshop`
 
 You can view the app at `http://localhost:5005`
 
@@ -66,4 +68,4 @@ Note: try to assign 8G memory and 2CPU in Docker when running the docker build
 
 `docker pull TBD`
 
-`docker run TBD`
+`docker run -d -p 5005:5005 TBD`

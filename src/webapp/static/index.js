@@ -24,7 +24,7 @@ $( document ).ready(function() {
         if (valid) {
             var dataStr = '?' + data.join('&');
 
-            $.ajax("/prediction" + dataStr)
+            $.ajax(window.location.pathname + "/prediction" + dataStr)
                 .done(function(result) {
                     $('#prediction').text(result);
                 })
