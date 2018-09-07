@@ -1,7 +1,13 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: $tenant$
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: ci-workshop-web
+  namespace: $tenant$
   labels:
     app: ci-workshop
 spec:
@@ -16,6 +22,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: ci-workshop-web
+  namespace: $tenant$
   labels:
     app: ci-workshop
 spec:
@@ -53,6 +60,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ci-workshop-ingress
+  namespace: $tenant$
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/add-base-url: "true"
@@ -60,7 +68,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /ci-workshop-web
+      - path: /ci-workshop-web/$tenant$
         backend:
           serviceName: ci-workshop-web
           servicePort: 5005
