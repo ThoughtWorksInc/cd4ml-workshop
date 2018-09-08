@@ -39,7 +39,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: us.gcr.io/continuous-intelligence/ci-workshop-app
+      - image: eu.gcr.io/continuous-intelligence/ci-workshop-app
         imagePullPolicy: IfNotPresent
         name: ci-workshop-web
         ports:
