@@ -23,8 +23,8 @@ $( document ).ready(function() {
 
         if (valid) {
             var dataStr = '?' + data.join('&');
-
-            $.ajax(window.location.pathname + "/prediction" + dataStr)
+            var prefix = (window.location.pathname == "/" ? "" : window.location.pathname)
+            $.ajax(prefix + "/prediction" + dataStr)
                 .done(function(result) {
                     $('#prediction').text(result);
                 })
