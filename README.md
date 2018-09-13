@@ -11,7 +11,7 @@
 ```sh
 dvc run -d src/download_data.py -d gs://continuous-intelligence/store47-2016.csv -o data/raw/store47-2016.csv python src/download_data.py
 dvc run -d data/raw/store47-2016.csv -d src/splitter.py -o data/splitter/train.csv -o data/splitter/validation.csv python src/splitter.py
-dvc run -d data/splitter/train.csv -d data/splitter/validation.csv -d src/decision_tree.py -o data/decision_tree/model.pkl -M data/decision_tree/score_and_metadata.csv python src/decision_tree.py
+dvc run -d data/splitter/train.csv -d data/splitter/validation.csv -d src/decision_tree.py -o data/decision_tree/model.pkl -M results/score.txt python src/decision_tree.py
 ```
 
 ### Push the Results
