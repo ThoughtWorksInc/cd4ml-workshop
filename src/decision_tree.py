@@ -61,13 +61,13 @@ def encode(train, validate):
     return train, validate
 
 
-def make_model(train, model=Model.DECISION_TREE):
+def make_model(train, model=Model.DECISION_TREE, seed=None):
     print("Creating decision tree model")
     train_dropped = train.drop('unit_sales', axis=1)
     target = train['unit_sales']
 
     if model == Model.RANDOM_FOREST:
-        clf = ensemble.RandomForestRegressor()
+        clf = ensemble.RandomForestRegressor(random_state=seed)
     elif model == Model.ADABOOST:
         clf = ensemble.AdaBoostRegressor()
     elif model == Model.GRADIENT_BOOST:
@@ -117,10 +117,10 @@ def write_predictions_and_score(validation_score, model, columns_used):
     print("Done deciding with trees")
 
 
-def main(model=Model.DECISION_TREE):
+def main(model=Model.DECISION_TREE, seed=None):
     original_train, original_validate = load_data()
     train, validate = encode(original_train, original_validate)
-    model = make_model(train, model)
+    model = make_model(train, model, seed)
     validation_predictions = make_predictions(model, validate)
 
     print("Calculating estimated error")
@@ -132,4 +132,4 @@ def main(model=Model.DECISION_TREE):
 
 
 if __name__ == "__main__":
-    main()
+    main(seed=8675309)
