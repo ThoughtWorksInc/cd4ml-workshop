@@ -1,0 +1,15 @@
+FROM 3.6.6-windowsservercore-ltsc2016
+
+RUN Invoke-WebRequest 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/MinGit-2.12.2.2-64-bit.zip' -OutFile MinGit.zip
+
+RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
+$env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
+Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $env:PATH
+
+RUN mkdir -p c:\app\continuous-intelligence
+RUN git clone https://github.com/ThoughtWorksInc/continuous-intelligence-workshop.git c:\app\continuous-intelligence
+RUN mkdir c:\app\continuous-intelligence\data
+COPY data c:\app\continuous-intelligence\data
+RUN cd c:\app\continuous-intelligence\data && pip install -r requirements.txt
+
+CMD ["c:\app\continuous-intelligence\start.bat"]
