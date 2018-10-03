@@ -1,1 +1,1 @@
-cd c:\app\continuous-intelligence\ && python src/app.py
+cd C:\app\continuous-intelligence\ && python src/app.py
