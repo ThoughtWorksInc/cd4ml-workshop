@@ -12,7 +12,7 @@ def load_data():
         client = storage.Client()
         bucket = client.get_bucket(gcsBucket)
         blob = bucket.get_blob(key)
-        blob.download_to_filename('data/raw/store47-2016.csv')
+        blob.download_to_filename(os.path.join('data/raw', key))
 
 
 def main():
