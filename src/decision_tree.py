@@ -69,11 +69,11 @@ def make_model(train, model=Model.DECISION_TREE, seed=None):
     if model == Model.RANDOM_FOREST:
         clf = ensemble.RandomForestRegressor(random_state=seed)
     elif model == Model.ADABOOST:
-        clf = ensemble.AdaBoostRegressor()
+        clf = ensemble.AdaBoostRegressor(random_state=seed)
     elif model == Model.GRADIENT_BOOST:
-        clf = ensemble.GradientBoostingRegressor(max_depth=4, n_estimators=200)
+        clf = ensemble.GradientBoostingRegressor(max_depth=4, n_estimators=200, random_state=seed)
     else:
-        clf = tree.DecisionTreeRegressor()
+        clf = tree.DecisionTreeRegressor(random_state=seed)
 
     clf = clf.fit(train_dropped, target)
     return clf
