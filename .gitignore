@@ -9,3 +9,4 @@ test/__pycache__/
 .ipynb_checkpoints
 **/env/**
 results/
+.pytest_cache
