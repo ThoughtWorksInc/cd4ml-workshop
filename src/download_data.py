@@ -9,10 +9,10 @@ def load_data(path, key):
         os.makedirs(path)
 
     if not os.path.exists(os.path.join(path, key)):
-        client = storage.Client()
-        bucket = client.get_bucket(gcsBucket)
-        blob = bucket.get_blob(key)
-        blob.download_to_filename(os.path.join(path, key))
+        client = storage.Client.create_anonymous_client()
+        bucket = client.bucket(bucket_name=gcsBucket, user_project=None)
+        blob = storage.Blob(key, bucket)
+        blob.download_to_filename(filename=os.path.join(path, key), client=client)
 
 
 def main():
