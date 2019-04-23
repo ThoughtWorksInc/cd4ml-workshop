@@ -14,4 +14,4 @@ while [ -z $external_ip ]; do
   external_ip=$(kubectl get svc ci-workshop-web --namespace=$TENANT_NAMESPACE --template="{{range .status.loadBalancer.ingress}}{{.ip}}{{end}}")
   [ -z "$external_ip" ] && sleep 10
 done
-echo "End point ready: http://$external_ip:5005"
+echo "End point ready: http://$external_ip"
