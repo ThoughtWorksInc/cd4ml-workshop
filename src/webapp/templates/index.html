@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <title>Sales Forecasting</title>
     </head>
     <body>
@@ -15,28 +16,12 @@
                     <input type="text" id="date" placeholder="2017-06-14">
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="col-md-3" for="day_off">Day off</label>
-                    <input type="checkbox" id="day_off" value="">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="col-md-3" for="item_nbr">Item Number</label>
-                    <input type="number" id="item_nbr" placeholder="99197">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="col-md-3" for="family">Family</label>
-                    <input type="text" id="family" placeholder="GROCERY I">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="col-md-3" for="class">Class</label>
-                    <input type="text" id="class" placeholder="1067">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="col-md-3" for="perishable">Perishable</label>
-                    <input type="checkbox" id="perishable" value="">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="col-md-3" for="transactions">Transactions</label>
-                    <input type="number" id="transactions" placeholder="4170">
+                    <label class="col-md-3" for="item_nbr">Product</label>
+                    <select id="item_nbr">
+                      <option value="99197" selected>Milk</option>
+                      <option value="105574">Cheese</option>
+                      <option value="1963838">Soap</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-6 text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -47,6 +32,7 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="static/index.js"></script>
     </body>

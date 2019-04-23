@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+    $('#date').datepicker({
+      dateFormat: "yy-mm-dd"
+    });
 
     $('button[type="submit"]').click(function() {
         var data = [];
@@ -7,7 +10,7 @@ $( document ).ready(function() {
             data.push(this.id + "=" + this.checked);
         });
 
-        $( 'input[type="text"], input[type="number"]' ).each(function() {
+        $( 'input[type="text"], select' ).each(function() {
             if (this.id === 'date' && !/[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/.test($(this).val())) {
                 alert("Invalid date format");
                 valid = false;
