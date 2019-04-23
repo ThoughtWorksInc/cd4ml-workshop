@@ -12,8 +12,8 @@ metadata:
     app: ci-workshop
 spec:
   ports:
-    - port: 80
-    - targetPort: 5005
+  - port: 80
+    targetPort: 5005
   selector:
     app: ci-workshop
     tier: frontend
