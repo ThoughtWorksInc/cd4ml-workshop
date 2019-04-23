@@ -1,5 +1,5 @@
 import os
-from google.cloud import storage
+import urllib.request
 import argparse
 
 def load_data(path, key):
@@ -9,10 +9,8 @@ def load_data(path, key):
         os.makedirs(path)
 
     if not os.path.exists(os.path.join(path, key)):
-        client = storage.Client.create_anonymous_client()
-        bucket = client.bucket(bucket_name=gcsBucket, user_project=None)
-        blob = storage.Blob(key, bucket)
-        blob.download_to_filename(filename=os.path.join(path, key), client=client)
+        url = "https://storage.googleapis.com/%s/%s" % (gcsBucket, key)
+        urllib.request.urlretrieve(url, os.path.join(path, key))
 
 
 def main():
