@@ -6,10 +6,6 @@ $( document ).ready(function() {
     $('button[type="submit"]').click(function() {
         var data = [];
         var valid = true;
-        $( 'input[type="checkbox"]').each( function() {
-            data.push(this.id + "=" + this.checked);
-        });
-
         $( 'input[type="text"], select' ).each(function() {
             if (this.id === 'date' && !/[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/.test($(this).val())) {
                 alert("Invalid date format");
@@ -27,12 +23,19 @@ $( document ).ready(function() {
         if (valid) {
             var dataStr = '?' + data.join('&');
             var prefix = (window.location.pathname == "/" ? "" : window.location.pathname)
-            $.ajax(prefix + "/prediction" + dataStr)
+            $.ajax(prefix + "/prediction" + dataStr, {
+                    beforeSend: function() {
+                      $('#prediction').text('loading...')
+                      $('button[type="submit"]').attr("disabled", "true")
+                    }
+                })
                 .done(function(result) {
                     $('#prediction').text(result);
+                    $('button[type="submit"]').removeAttr("disabled")
                 })
                 .fail(function() {
                     alert("Request failed.")
+                    $('button[type="submit"]').removeAttr("disabled")
                 });
         }
     })
