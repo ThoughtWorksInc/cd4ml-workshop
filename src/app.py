@@ -3,8 +3,11 @@ from datetime import datetime
 from sklearn.externals import joblib
 import pandas as pd
 import decision_tree
+import os
+from fluent import sender, event
 
 app = Flask(__name__, template_folder='webapp/templates', static_folder='webapp/static')
+
 products = {
     "99197": {
         "class": 1067,
@@ -22,6 +25,10 @@ products = {
         "perishable": 0
     }
 }
+
+TENANT = os.getenv('TENANT', 'local')
+FLUENTD_HOST = os.getenv('FLUENTD_HOST')
+FLUENTD_PORT = os.getenv('FLUENTD_PORT')
 
 @app.route('/')
 def index():
@@ -54,6 +61,13 @@ def get_prediction():
 
   df = decision_tree.encode_categorical_columns(df)
   pred = loaded_model.predict(df)
+  if FLUENTD_HOST is not None:
+      logger = sender.FluentSender(TENANT, host=FLUENTD_HOST, port=int(FLUENTD_PORT))
+      log_payload = {'prediction': pred[0], **data}
+      print('logging {}'.format(log_payload))
+      if not logger.emit('prediction', log_payload):
+          print(logger.last_error)
+          logger.clear_last_error()
 
   return "%d" % pred[0]
 

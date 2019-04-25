@@ -43,6 +43,13 @@ spec:
       - image: eu.gcr.io/continuous-intelligence/ci-workshop-app
         imagePullPolicy: IfNotPresent
         name: ci-workshop-web
+        env:
+        - name: TENANT
+          value: $tenant$
+        - name: FLUENTD_HOST
+          value: $fluentd_host$
+        - name: FLUENTD_PORT
+          value: $fluentd_port$
         ports:
         - containerPort: 5005
           name: ci-workshop-web
