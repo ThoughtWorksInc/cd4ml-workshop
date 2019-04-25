@@ -4,8 +4,8 @@ set -xe
 IMAGE_VERSION=${GO_PIPELINE_LABEL:-latest}
 PROJECT_ID=${GCLOUD_PROJECT_ID:-continuous-intelligence}
 TENANT_NAMESPACE=${TENANT:-admin}
-FLUENTD_HOST=${FLUENTD_HOST:-\'\'}
-FLUENTD_PORT=${FLUENTD_PORT:-\'\'}
+FLUENTD_HOST=${FLUENTD_HOST:-""}
+FLUENTD_PORT=${FLUENTD_PORT:-""}
 echo "Deploying image version: $IMAGE_VERSION"
 
 cat kubernetes/web.yml \

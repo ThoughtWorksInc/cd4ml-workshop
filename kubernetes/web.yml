@@ -47,9 +47,9 @@ spec:
         - name: TENANT
           value: $tenant$
         - name: FLUENTD_HOST
-          value: $fluentd_host$
+          value: '$fluentd_host$'
         - name: FLUENTD_PORT
-          value: $fluentd_port$
+          value: '$fluentd_port$'
         ports:
         - containerPort: 5005
           name: ci-workshop-web
