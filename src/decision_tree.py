@@ -1,16 +1,13 @@
 from enum import Enum
 import numpy as np
 import pandas as pd
-import sys
-import os
+import sys, os, json
 from sklearn.preprocessing import LabelEncoder
 from sklearn.externals import joblib
 sys.path.append(os.path.join('..', 'src'))
 sys.path.append(os.path.join('src'))
-from sklearn import tree
-from sklearn import ensemble
+from sklearn import tree, ensemble, metrics
 import evaluation
-
 
 class Model(Enum):
     DECISION_TREE = 0
@@ -61,22 +58,26 @@ def encode(train, validate):
     return train, validate
 
 
-def make_model(train, model=Model.DECISION_TREE, seed=None):
-    print("Creating decision tree model")
+def train_model(train, model=Model.DECISION_TREE, seed=None):
+    print("Training model using regressor: {}".format(model.name))
     train_dropped = train.drop('unit_sales', axis=1)
     target = train['unit_sales']
 
     if model == Model.RANDOM_FOREST:
-        clf = ensemble.RandomForestRegressor(random_state=seed)
+        params = {'n_estimators': 10}
+        clf = ensemble.RandomForestRegressor(random_state=seed, **params)
     elif model == Model.ADABOOST:
-        clf = ensemble.AdaBoostRegressor(random_state=seed)
+        params = {'n_estimators': 50, 'learning_rate': 1.0, 'loss':'linear'}
+        clf = ensemble.AdaBoostRegressor(random_state=seed, **params)
     elif model == Model.GRADIENT_BOOST:
-        clf = ensemble.GradientBoostingRegressor(max_depth=4, n_estimators=200, random_state=seed)
+        params = {'n_estimators': 200, 'max_depth': 4}
+        clf = ensemble.GradientBoostingRegressor(random_state=seed, **params)
     else:
+        params = {'criterion': 'mse'}
         clf = tree.DecisionTreeRegressor(random_state=seed)
 
-    clf = clf.fit(train_dropped, target)
-    return clf
+    model = clf.fit(train_dropped, target)
+    return (model,params)
 
 
 def overwrite_unseen_prediction_with_zero(preds, train, validate):
@@ -90,14 +91,14 @@ def overwrite_unseen_prediction_with_zero(preds, train, validate):
     return preds
 
 
-def make_predictions(clf, validate):
+def make_predictions(model, validate):
     print("Making prediction on validation data")
     validate_dropped = validate.drop('unit_sales', axis=1).fillna(-1)
-    validate_preds = clf.predict(validate_dropped)
+    validate_preds = model.predict(validate_dropped)
     return validate_preds
 
 
-def write_predictions_and_score(validation_score, model, columns_used):
+def write_predictions_and_score(evaluation_metrics, model, columns_used):
     key = "decision_tree"
     if not os.path.exists('data/{}'.format(key)):
         os.makedirs('data/{}'.format(key))
@@ -105,31 +106,30 @@ def write_predictions_and_score(validation_score, model, columns_used):
     print("Writing to {}".format(filename))
     joblib.dump(model, filename)
 
-    filename = 'results/score.txt'
+    filename = 'results/metrics.json'
     print("Writing to {}".format(filename))
     if not os.path.exists('results'):
         os.makedirs('results')
     with open(filename, 'w+') as score_file:
-        score_file.write(str(validation_score))
-    # score = pd.DataFrame({'estimate': [validation_score]})
-    # score.to_csv(filename, index=False)
-
-    print("Done deciding with trees")
+        json.dump(evaluation_metrics, score_file)
 
 
 def main(model=Model.DECISION_TREE, seed=None):
     original_train, original_validate = load_data()
     train, validate = encode(original_train, original_validate)
-    model = make_model(train, model, seed)
+    model, params = train_model(train, model, seed)
     validation_predictions = make_predictions(model, validate)
 
-    print("Calculating estimated error")
-    validation_score = evaluation.nwrmsle(validation_predictions, validate['unit_sales'].values, validate['perishable'].values)
+    print("Calculating metrics")
+    evaluation_metrics = {
+        'nwrmsle': evaluation.nwrmsle(validation_predictions, validate['unit_sales'].values, validate['perishable'].values),
+        'r2_score': metrics.r2_score(y_true=validate['unit_sales'].values, y_pred=validation_predictions)
+    }
 
-    write_predictions_and_score(validation_score, model, original_train.columns)
+    write_predictions_and_score(evaluation_metrics, model, original_train.columns)
 
-    print("Decision tree analysis done with a validation score (error rate) of {}.".format(validation_score))
+    print("Evaluation done with metrics {}.".format(json.dumps(evaluation_metrics)))
 
 
 if __name__ == "__main__":
-    main(seed=8675309)
+    main(model=Model.DECISION_TREE, seed=8675309)
