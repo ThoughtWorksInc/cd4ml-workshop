@@ -8,5 +8,4 @@ test/__pycache__/
 .vscode
 .ipynb_checkpoints
 **/env/**
-results/
 .pytest_cache
