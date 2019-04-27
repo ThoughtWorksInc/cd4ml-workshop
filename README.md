@@ -1,71 +1,39 @@
-# Continuous Intelligence Workshop
+# Continuous Intelligence and CD4ML Workshop
 
-## Running Workshop with dvc
+This workshop contains the sample application and machine learning code used for
+the Continuous Delivery for Machine Learning (CD4ML) and Continuous Intelligence
+workshop. This material has been developed and is continuously evolved by
+[ThoughtWorks](www.thoughtworks.com/open-source) and has been presented in
+conferences such as: Yottabyte 2018, World AI Summit 2018, Strata London 2019,
+and others.
 
-1. Build the pipline
-2. Push the results
-3. Pull and reproduce
+## Pre-Requisites
 
-### Build Pipeline with dvc
+In order to run this workshop, you will need:
 
-```sh
-dvc run -d src/download_data.py -o data/raw/store47-2016.csv python src/download_data.py
-dvc run -d data/raw/store47-2016.csv -d src/splitter.py -o data/splitter/train.csv -o data/splitter/validation.csv python src/splitter.py
-dvc run -d data/splitter/train.csv -d data/splitter/validation.csv -d src/decision_tree.py -o data/decision_tree/model.pkl -M results/score.txt python src/decision_tree.py
-```
+* A valid Github account
+* A working Docker setup (if running on Windows, make sure to use Linux containers)
 
-### Push the Results
+## Workshop Instructions
 
-First, push code changes to Github as usual, for instance:
-```sh
-git commit -am "Change model to be more awesome"
-git push origin master
-```
+The workshop is divided into several steps, which build on top of each other.
+Instructions for each exercise can be found under the
+[`instructions`](./instructions) folder.
 
-Next, push your dvc files to the cloud:
-```sh
-dvc push
-```
+*WARNING: the exercises build on top of each other, so you might not be able to
+skip steps ahead without executing them.*
 
-That's it! Now anyone with access can fetch this repository and use dvc to replicate and build on your work.
+## Collaborators
 
-### Pull and reproduce changes
+The material, ideas, and content developed for this workshop were contributions
+from (in alphabetical order):
 
-First, clone/pull this git repo.
-
-```sh
-git pull origin master --rebase
-```
-
-Next, pull from the cloud with dvc:
-```sh
-dvc pull
-```
-
-Finally, to reproduce the entire pipeline, simply run:
-```sh
-dvc repro model.pkl.dvc
-```
-Here, `model.pkl.dvc` is the last output in the dvc pipeline. Running it will reproduce all steps.
-
-If you want to change the model, for example, edit the `decision_tree.py` file as you see fit. Then, you should be able to re-execute the model simply by re-running the pipeline using `dvc repro model.pkl.dvc`.
-
-## Local setup
-
-### Build locally and run
-
-Once the model has been trained
-
-`docker build . -t ci-workshop`
-
-`docker run -d -p 5005:5005 ci-workshop`
-
-You can view the app at `http://localhost:5005`
-
-Note: try to assign 8G memory and 2CPU in Docker when running the docker build
-
-### Run with existing image
-
-`docker pull TBD`
-
-`docker run -d -p 5005:5005 TBD`
+* [Arif Wider](https://github.com/arifwider)
+* [Arun Manivannan](https://github.com/arunma)
+* [Christoph Windheuser](https://github.com/ciwin)
+* [Danilo Sato](https://github.com/dtsato)
+* [Danni Yu](https://github.com/danniyu)
+* [David Tan](https://github.com/davified)
+* [Emily Grasmeder](https://github.com/emilyagras)
+* [Emily Gorcenski](https://github.com/Gorcenski)
+* [Jonathan Heng](https://github.com/jonheng)
