@@ -23,6 +23,15 @@ Instructions for each exercise can be found under the
 *WARNING: the exercises build on top of each other, so you might not be able to
 skip steps ahead without executing them.*
 
+## The Machine Learning Problem
+
+We built a simplified solution to a Kaggle problem posted by Corporación Favorita,
+a large Ecuadorian-based grocery retailer interested in improving their
+[Sales Forecasting](https://www.kaggle.com/c/favorita-grocery-sales-forecasting/overview)
+using data. For the purposes of this workshop, we have combined and simplified
+their data sets, as our goal is not to find the best predictions, but to
+demonstrate how to implement CD4ML.
+
 ## Collaborators
 
 The material, ideas, and content developed for this workshop were contributions
