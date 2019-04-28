@@ -26,6 +26,6 @@ tracking server and your tenant:
 
 5. Visit the MLflow URL http://mlflow.cd4ml.net to find your experiment results.
 
-<kbd>![Model monitoring in Kibana](./images/5-kibana.png)</kbd>
+<kbd>![Tracking experiment runs with MLflow](./images/4-mlflow.png)</kbd>
 
 6. Done! Go to [the next exercise](./5-model-monitoring.md)
