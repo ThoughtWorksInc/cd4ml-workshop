@@ -45,4 +45,5 @@ from (in alphabetical order):
 * [David Tan](https://github.com/davified)
 * [Emily Grasmeder](https://github.com/emilyagras)
 * [Emily Gorcenski](https://github.com/Gorcenski)
+* [Jin Yang](https://github.com/yytina)
 * [Jonathan Heng](https://github.com/jonheng)
