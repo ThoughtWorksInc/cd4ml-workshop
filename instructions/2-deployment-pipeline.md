@@ -34,16 +34,7 @@ git commit -m"Sample change"
 git push
 ```
 
-6. Once the pipeline succeeds, you can find your application's URL in GoCD:
-
-  * Click on the second green checkbox ( ![green checkbox](./images/check.png) ) in
-  your pipeline
-  * Click on the green *"deploy"* job in the lower left corner of the window
-  to open the console log
-  * Expand the `bash -c ./deploy.sh` task
-  * You will find an entry with the URL to access your app like:
-  ```
-  End point ready: http://xx.xx.xxx.xxx.
-  ```
+6. Once the pipeline succeeds, you can access your application's URL at
+http://userX.app.cd4ml.net (replace `X` with your user ID)
 
 7. Done! Go to [the next exercise](./3-machine-learning-pipeline.md)
