@@ -49,7 +49,7 @@ port:
 menu.
 
 7. In the search field, find the entries tagged with your user, with a query
-string `tag:userX.prediction` (substitute `X` with your user ID).
+string `tag:"userX.prediction"` (substitute `X` with your user ID).
 
 8. Click *"Refresh"* and you should see your predictions logged!
 
