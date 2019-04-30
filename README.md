@@ -20,7 +20,7 @@ The workshop is divided into several steps, which build on top of each other.
 Instructions for each exercise can be found under the
 [`instructions`](./instructions) folder.
 
-*WARNING: the exercises build on top of each other, so you might not be able to
+*WARNING: the exercises build on top of each other, so you will not be able to
 skip steps ahead without executing them.*
 
 ## The Machine Learning Problem
