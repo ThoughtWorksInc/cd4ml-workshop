@@ -23,6 +23,11 @@ Instructions for each exercise can be found under the
 *WARNING: the exercises build on top of each other, so you will not be able to
 skip steps ahead without executing them.*
 
+*WARNING 2: the workshop requires infrastructure that we only provision when
+needed, therefore you won't be able to execute the exercises on your own that
+require that shared infrastructure. We are working on a setup that allows
+running the workshop locally, but that is work in progress.*
+
 ## The Machine Learning Problem
 
 We built a simplified solution to a Kaggle problem posted by Corporación Favorita,

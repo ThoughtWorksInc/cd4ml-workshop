@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from datetime import datetime
-from sklearn.externals import joblib
+import joblib
 import pandas as pd
 import decision_tree
 import os

@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import sys, os, json
 from sklearn.preprocessing import LabelEncoder
-from sklearn.externals import joblib
+import joblib
 sys.path.append(os.path.join('..', 'src'))
 sys.path.append(os.path.join('src'))
 from sklearn import tree, ensemble, metrics
