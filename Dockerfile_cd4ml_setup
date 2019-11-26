@@ -15,6 +15,7 @@ RUN mkdir -p /app/continuous-intelligence \
   && mkdir -p /app/continuous-intelligence/data/raw \
   && pip install --no-cache-dir --no-compile -r requirements.txt \
   && conda list && conda clean -tipy \
-  && python /app/continuous-intelligence/src/download_data.py
+  && python /app/continuous-intelligence/src/download_data.py \
+  && python /app/continuous-intelligence/src/download_data.py --model
 
 CMD ["/app/continuous-intelligence/start.sh"]

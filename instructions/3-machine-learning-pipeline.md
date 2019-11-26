@@ -34,15 +34,19 @@ git push
 4. Create machine learning training pipeline in GoCD:
 
   * Go to GoCD's [*"Admin" > "Pipelines"*](http://gocd.cd4ml.net/go/admin/pipelines)
-  menu and create a new pipeline. Give it a name related to your username, e.g.
-  `ml-pipeline-X`, replacing `X` with your user ID).
+  menu and create a new pipeline.
 
-  * Configure your Github repository URL (e.g. `https://github.com/<github-user>/continuous-intelligence-workshop.git`) as a Git material, and use the
-  existing `ml-pipeline-gcp-template` template when configuring the stages.
+  * Configure your Github repository URL (e.g. `https://github.com/<github-user>/continuous-intelligence-workshop.git`) as a Git material.
+
+  * Give it a name related to your username, e.g. `ml-pipeline-X`, replacing `X`
+  with your user ID).
+
+  * Click on *"Advanced Settings"* for "Part 2", enable the "Use Template"
+  toggle and select the existing `ml-pipeline-gcp-template` template.
 
   <kbd>![GoCD Configuration for ML pipeline](./images/3-ml-pipeline.png)</kbd>
 
-  * Click *"Finish"*
+  * Click *"Save + Run This Pipeline"*
 
 5. Combine both pipelines:
 
@@ -61,7 +65,7 @@ git push
 
   * Save and go back to the main [Dashboard](http://gocd.cd4ml.net) page
 
-6. Unpause the machine learning pipeline to train and publish your model.
+6. Wait for the machine learning pipeline to train and publish your model.
 
 **WARNING: The pipeline should fail because the model training accuracy is not
 good enough!**
