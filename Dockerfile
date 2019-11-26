@@ -1,5 +1,7 @@
 FROM eu.gcr.io/continuous-intelligence/gocd-agent-docker-dind-dvc:v19.9.0
 
+USER root
+
 RUN mkdir -p /app/continuous-intelligence/{src,data}
 
 COPY start.sh /app/continuous-intelligence
