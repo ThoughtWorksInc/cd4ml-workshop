@@ -1,4 +1,4 @@
-FROM eu.gcr.io/continuous-intelligence/gocd-agent-docker-dind-dvc:latest
+FROM eu.gcr.io/continuous-intelligence/gocd-agent-docker-dind-dvc:v19.9.0
 
 RUN mkdir -p /app/continuous-intelligence/{src,data}
 
