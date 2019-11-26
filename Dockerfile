@@ -1,4 +1,4 @@
-FROM eu.gcr.io/continuous-intelligence/gocd-agent-docker-dind-dvc:v19.9.0
+FROM eu.gcr.io/continuous-intelligence/cd4ml-workshop:latest
 
 USER root
 
