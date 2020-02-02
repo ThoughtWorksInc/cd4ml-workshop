@@ -14,7 +14,7 @@ ML model
 1. Configure DVC to use your GCP bucket for remote storage **(replace `X` with
   your user ID)**:
 ```bash
-dvc remote modify default url gs://cd4ml-bucket-X
+dvc remote modify default url gs://cd4ml-continuous-intelligence-bucket-X
 ```
 
 2. Create your Machine Learning pipeline with dvc:
