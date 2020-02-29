@@ -1,16 +1,20 @@
-# Exercise 1: Local Environment Setup
+# Exercise 1: Development Environment Setup
 
 ## Goals
 
 * Fork your copy of the repository in Github
-* Configure a local containerized development environment by using a Docker image
-* Test the application running locally
+* Login to your development environment in Jupyterlab
+* Configure Git
 
 ## Step by Step instructions
 
-1. Visit the main repository at https://github.com/ThoughtWorksInc/continuous-intelligence-workshop and **fork it** to your personal GitHub account. **Don't
-clone the main repository** (a copy of the repository is included in the Docker
-image to save time and bandwidth).
+We have provisioned all the infrastructure required for the workshop. Each
+participant is assigned a numeric ID (from 1 to 100), which will be used
+throughout the workshop.
+
+1. Visit the main repository at https://github.com/ThoughtWorksInc/cd4ml-workshop
+and **fork it** to your personal GitHub account. **Don't clone the main
+repository**.
 
 2. Create a personal access token in GitHub:
 
@@ -21,51 +25,24 @@ image to save time and bandwidth).
   * Click "Generate new token", choose a name and give it **repo** rights
   * Copy the access token value
 
-3. Start the containerized development environment with Docker. You can copy the
-image from the provided USB stick to save bandwidth or download it directly from
-Docker Hub (if you do not have the stick):
+3. Go to Jupyter Lab at https://jupyterhub.cd4ml.net and login with the username
+and password provided.
 
-  * **From the USB stick**: copy the file `cd4ml-setup.tar` from the USB stick
-  to your computer on `<your-local-path>` and run:
-    ```bash
-    docker load --input <your-local-path>/cd4ml-setup.tar
-    ```
+4. Open a terminal by clicking on the icon:
 
-  * **From Docker Hub**:
-    ```bash
-    docker pull dtsato/cd4ml-workshop-setup
-    ```
+  <kbd>![Open terminal](./images/1-open-terminal.png)</kbd>
 
-4. Run the Docker container:
+5. Setup Git by running the following script and answering the questions with
+your details:
 
-  * If you are running Docker on a **Windows machine**:
-    ```bash
-    docker run --platform linux --name cd4ml -d -p 5005:5005 dtsato/cd4ml-workshop-setup
-    ```
-
-  * If you are running Docker on a **Linux or Mac machine**:
-    ```bash
-    docker run --name cd4ml -d -p 5005:5005 dtsato/cd4ml-workshop-setup
-    ```
-
-5. Open a shell inside your container by running:
 ```bash
-docker exec -it cd4ml bash
+./setup-git.sh
 ```
 
-6. Once inside the container, go to the source code folder and configure Git
-running the following commands (replace the placeholders between `<`and `>`):
-```bash
-cd app/continuous-intelligence
-git remote set-url origin https://<github-username>:<token>@github.com/<github-username>/<your-forked-repository>
-git config --global user.name "<your-name>"
-git config --global user.email "<your-email>"
-git pull --rebase
-```
-
-7. To test and see the application running locally, open a browser tab, go to
-http://localhost:5005, and you should see the application like:
+6. To test and see the application running in production, open a browser tab, go
+to http://userX.app.cd4ml.net (replace `X` with your user ID), and you should
+see the application like:
 
 <kbd>![Sample application](./images/1-sample-app.png)</kbd>
 
-8. Done! Go to [the next exercise](./2-deployment-pipeline.md)
+7. Done! Go to [the next exercise](./2-deployment-pipeline.md)

@@ -9,10 +9,6 @@ to build and deploy your application to production
 
 ## Step by Step instructions
 
-We have provisioned all the infrastructure required for the workshop. Each
-participant is assigned a numeric ID (from 1 to 50), which will be used
-throughout the workshop.
-
 1. Go to GoCD at http://gocd.cd4ml.net and login with the username and password
 provided.
 
