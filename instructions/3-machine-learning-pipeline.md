@@ -36,7 +36,7 @@ git push
   * Go to GoCD's [*"Admin" > "Pipelines"*](http://gocd.cd4ml.net/go/admin/pipelines)
   menu and create a new pipeline.
 
-  * Configure your Github repository URL (e.g. `https://github.com/<github-user>/continuous-intelligence-workshop.git`) as a Git material.
+  * Configure your Github repository URL (e.g. `https://github.com/<github-user>/cd4ml-workshop.git`) as a Git material.
 
   * Give it a name related to your username, e.g. `ml-pipeline-X`, replacing `X`
   with your user ID).
