@@ -21,9 +21,9 @@ with your GitHub username.
 
 4. Save and go back to the [Dashboard](http://gocd.cd4ml.net) page
 
-5. Make a small change to your forked code, e.g., change the `README.md`, then
-add, commit, and push your changes to see your project being built and deployed
-in GoCD:
+5. Make a small change to your forked code, e.g., change the
+`src/webapp/templates/index.html` file, then add, commit, and push your changes
+to see your project being built and deployed in GoCD:
 ```bash
 git add .
 git commit -m"Sample change"
