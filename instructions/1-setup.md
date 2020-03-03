@@ -32,10 +32,11 @@ and password provided.
 
   <kbd>![Open terminal](./images/1-open-terminal.png)</kbd>
 
-5. Setup Git by running the following script and answering the questions with
+5. Setup Git by running the following commands and answering the questions with
 your details:
 
 ```bash
+cd cd4ml-workshop
 ./setup-git.sh
 ```
 
