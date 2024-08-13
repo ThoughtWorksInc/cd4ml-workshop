@@ -1,5 +1,8 @@
 # Continuous Intelligence and CD4ML Workshop
 
+*NOTE: We are archiving this repository, as it's not been maintained and updated recently.
+We will keep it read-only for anyone interested in forking and evolving it independently*
+
 This workshop contains the sample application and machine learning code used for
 the Continuous Delivery for Machine Learning (CD4ML) and Continuous Intelligence
 workshop. This material has been developed and is continuously evolved by
