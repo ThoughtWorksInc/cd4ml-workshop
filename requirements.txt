@@ -10,4 +10,4 @@ lime==0.1.1.36
 fluent-logger==0.9.4
 s3fs==0.1.2
 seaborn==0.9.0
-joblib==0.14.0
+joblib==1.2.0
